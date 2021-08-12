@@ -6,7 +6,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+iframe, h1, h2, h3, h4, h5, h6, hplain, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -136,10 +136,23 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.5;
   margin: 0 0 1em 0; }
+hplain {
+  color: #7f888f;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 0 1em 0;
+}
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: inherit;
     text-decoration: none;
     border-bottom: 0; }
+
+hplain a {
+color: #7f888f;
+text-decoration: none;
+border-decoration:none;
+}
 
 h1 {
   font-size: 4em;
@@ -151,6 +164,9 @@ h2 {
 
 h3 {
   font-size: 1.25em; }
+
+hplain {
+  font-size: 1.1em; }
 
 h4 {
   font-size: 1.1em; }
@@ -1220,7 +1236,7 @@ input[type="radio"] + label:before {
     border-radius: 0.375em;
     display: block; }
   .image.left, .image.right {
-    max-width: 40%; }
+    max-width: 20%; }
     .image.left img, .image.right img {
       width: 100%; }
   .image.left {
@@ -1527,7 +1543,7 @@ button,
   input[type="button"].small,
   button.small,
   .button.small {
-    font-size: 0.6em; }
+    font-size: 0.75em; }
   input[type="submit"].large,
   input[type="reset"].large,
   input[type="button"].large,
