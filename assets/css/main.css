@@ -6,7 +6,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, hplain, p, blockquote,
+iframe, h1, h2, h3, h4, h5, h6, hplain, hplain2, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.5;
   margin: 0 0 1em 0; }
-hplain {
+hplain, hplain2 {
   color: #7f888f;
   font-family: "Roboto Slab", serif;
   font-weight: 400;
@@ -148,7 +148,7 @@ hplain {
     text-decoration: none;
     border-bottom: 0; }
 
-hplain a {
+hplain a, hplain2 a {
 color: #7f888f;
 text-decoration: none;
 border-decoration:none;
@@ -164,6 +164,9 @@ h2 {
 
 h3 {
   font-size: 1.25em; }
+
+hplain2 {
+  font-size: 1.25em;}
 
 hplain {
   font-size: 1.1em; }
