@@ -34,10 +34,15 @@
 									<div class="content">
 										<header>
 											<h1>Sean Condon</h1>
-											<p>Data scientist / machine learning engineer</p>
+											<p>Data scientist - machine learning engineer</p>
 										</header>
-										<p>Here is where I'm planning on putting in a pretty short bio about myself. I'll leave out any technical details and try to write it very casual, but for now I'm just going to fill this up with some dummy text so that there's not a massive whitespace where this bio should go. Check back soon for more here.</p>
-										<p>I like the look of two paragraphs, so I'll stick to this in production. I think this second paragraph will be quite a bit shorter than the first one, just one more line to beef this up a tad bit more and fill all the way to picture.</p>
+										<p>
+											Hello! I'm Sean, a final-term physics / computer science student at MIT, and a software engineer at a small startup working on AI for drug development. I'm passionate about how data science and machine learning enhance our understanding of the natural world, from rainy weather to protein folding to astrophysics.
+										</p>
+										<p>
+											This page has most of the information on my professional life, including projects I've worked on, teams I've worked on, and the kinds of things I know how to do. If you'd like a more organized breakdown of these things, feel free to download my resume <a download href="assets/resume.pdf">here</a> or send me an email at scondon@mit.edu!
+										</p>
+
 									</div>
 									<span class="image object">
 										<img src="images/me_and_hood-cropped-high.jpg" alt="" />
@@ -134,7 +139,7 @@
 											</ul>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+											<a href="#" class="image"><img src="images/muons.png" alt="" /></a>
 											<h3>Measuring Relativistic Particle Decay</h3>
 											<p>The velocity and lifetime of muons, a type of relativistic particle created in the upper atmosphere, are measured with a combined statistical analysis of monte carlo simulations and laboratory data.</p>
 											<p>Monte carlo simulation was implemented in python using numpy and matplotlib, and statistical analysis involved linear regression with scikit-learn and scipy.</p>
@@ -162,7 +167,13 @@
 										Somewhere along the way I took my first programming class, and I started using Python as a tool to advance my career in astronomy research.
 									</p>
 									<p>
-										Some thoughts about research
+										I was introduced to data science and machine learning while doing physics research internships on projects like exoplanet detection, gravitational wave analysis, and algorithm developement for the Large Hadron Collider.
+										I really enjoyed the research process, and loved focusing on long-term difficult problems rather than solving simple day-to-day tasks, but felt that my contributions to these large scientific organizations were sometimes a little too small to be felt sincerely.
+										So starting my junior year, I focused on using the statistics skills I had gained during astrophysics research to help out at smaller startups.
+									</p>
+									<p>
+										I began taking more pure math classes - probability, statistics, linear algebra - and computer science classes - machine learning, algorithms and data structures, and I noticed that my years in physics coursework had laid the mathematical background to excel.
+										I also started working at small startups, doing data science for weather prediction and drug design, and couldn't be happier with the change in my work's impact!
 									</p>
 									<div style="clear: both">
 										<h3 style="float: left">Informal</h3>
@@ -173,6 +184,9 @@
 
 									<p>
 										Recently, I've been using Coursera to gain skills that I never learned in the classroom. I'm currently enrolled in the <i>SQL for Data Science</i> Specialization, offered by UC Davis. The specialization consists of 4 courses, teaching the basics of SQL querying, data analysis and AB testing with SQL, and distributed computing with Apache Spark.
+									</p>
+									<p>
+										I really enjoying the online learning format of Coursera, and in the future am planning on completing courses in big data analysis with Scala, visualization with Tableau, and cloud-computing with GCP and AWS (to take the certificate exams for both platforms).
 									</p>
 
 								</section>
@@ -189,7 +203,7 @@
 									<hplain>Software Engineer &ensp; <span>&#8226;</span>  &ensp; <i>Aug 2020 - Present</i> &ensp;<span>&#8226;</span> &ensp; Remote </hplain>
 									<p style="margin-bottom:1em;"></p>
 										<p><span class="image left"><a href="https://learn.ventures/" target="_blank" rel="noopener noreferrer" class="image"><img src="images/learn_ventures_crop.png" alt="" /></a></span>
-										Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.
+											At learn ventures, I work on a variety of machine learning and physics simulation approaches to design novel proteins that can be used for treating a multitude of medical conditions. To date, our AI-based drug design pipeline has produced 1000s of new proteins which have been synthesized in lab and are currently undergoing testing for effectiveness in a variety of tasks. This work includes reading new papers every day on state-of-the-art ML and simulation based approaches for drug design, re-implementing models in our own infrastructure, and working with biochemical labs to verify that our <i>in-silico</i> methods work in the real world.
 											<br /><br />
 											<a class="button small">pytorch </a>&ensp;
 											<a class="button small">GCP </a>&ensp;
@@ -203,7 +217,7 @@
 									<hplain>Research Intern &ensp; <span>&#8226;</span>  &ensp; <i>May 2020 - Sept 2020</i> &ensp;<span>&#8226;</span> &ensp; Remote</hplain>
 									<p style="margin-bottom:1em;"></p>
 									<p><span class="image left"><a href="http://web.mit.edu/lns/research/hpg.html" target="_blank" rel="noopener noreferrer" class="image"><img src="images/cern.png" alt="" /></a></span>
-										The Large Hadron Collider (LHCb) at CERN collides atomic particles, and then probes the remnants of the collision to make experimental breakthoughs in particle physics. The LHCb detector outputs data from these collisions at the rate of 40 Tbit / s, and this data must be processed in real-time.
+										The Large Hadron Collider (LHCb) at CERN collides atomic particles, and then probes the remnants of these collisions to make experimental breakthoughs in particle physics. The LHCb detector outputs data from at the rate of 40 Tbit / s, and this data must be processed in real-time to determine what is useful and what can be thrown away. This determination was originally done by simply threshholding the collision parameters in a cut-based method. During summer 2020, I trained decision tree classifiers to handle this determination instead, allowing for 15% greater accuracy at the same false positive rate compared to cut-based classifiers. The decision trees were implemented in CUDA so that they could run on LHCb's GPU clusters during round 3 of data collection.
 									<br /><br />
 											<a class="button small">scikit-learn </a>&ensp;
 											<a class="button small">CUDA</a>&ensp;
@@ -229,7 +243,7 @@
 									<hplain>Research Intern &ensp; <span>&#8226;</span>  &ensp; <i>Jan 2019 - Jan 2020</i> &ensp;<span>&#8226;</span> &ensp; Cambridge, MA </hplain>
 									<p style="margin-bottom:1em;"></p>
 									<p><span class="image left"><a href="https://www.ligo.caltech.edu/MIT" target="_blank" rel="noopener noreferrer" class="image"><img src="images/ligo.png" alt="" /></a></span>
-										Gravitational waves form when two black holes collide and send out ripples in space-time. These ripples can be measured by very sensitive interferometers like LIGO, where a complex algorithm detects faint signals in exceptionally noisy data. In past years, this algorithm has been a match-filtering approach that compares time-series to an extensive template bank of possible signals. However, during the year of 2019, I demonstrated that convolutional neural networks could effectively relpace match-filtering approaches, offering lower latency and higher abillity to interpolate between templates. My CNN architecture performed 1000x faster than the old approach with similar accuracy, allowing a job that previously took 800 CPU cores to run on a single GPU.
+										Gravitational waves form when two black holes collide and send out ripples in space-time. These ripples can be measured by very sensitive interferometers like LIGO, where a complex algorithm detects faint signals in exceptionally noisy data. In past years, this algorithm has been a match-filtering approach that compares time-series to an extensive template bank of possible signals. However, during 2019, I demonstrated that convolutional neural networks could effectively relpace match-filtering approaches, offering lower latency and higher abillity to interpolate between templates. My CNN architecture performed 1000x faster than the old approach with similar accuracy, allowing a job that previously took 800 CPU cores to run on a single GPU.
 									<br /><br />
 											<a class="button small">tensorflow </a>&ensp;
 											<a class="button small">GCP </a>&ensp;
