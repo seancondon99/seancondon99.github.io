@@ -30,14 +30,56 @@
 										<h1>Rapid Image Search with CNN Fingerprints</h1>
 									</header>
 
-									<span class="center"><img src="images/ml_sat_search.png" alt="" style="width:700px;height:400px;" /></span>
+									<span class="center"><img src="images/k_search_final.png" alt="" style="width:650px;height:450px;" /></span>
 									<p></p>
+									<h2>Overview</h2>
+									<p>
+										There now exists so much satellite imagery of the planet that we need to devise clever methods of analysing it all in a reasonable amount of time.
+										One important analysis task is finding similar images within a massive database. Image similarity search could be used, for example, to count all of the solar panels in the United States from NASA satellite imagery to do energy output analysis,
+										or searching through oceanic satellite imagery to find and follow whales as they migrate. If you're dealing with image databases on the terabyte scale, it is not really feasible to compare one image directly with every other image in the database.
+										Instead, we can compress all of our images to information-dense fingerpints, and do the comparison among these fingerprints instead.
+									</p>
+									<p>
+										In this project, a ~100 GB dataset of aerial images is fed through a pretrained, state-of-the-art convolutional neural network (CNN), and the activation of an intermediate layer of this network is interpreted as
+										a low dimensional, information rich fingerprint for the original image. Similarity between two fingerprints (1-dimensional vectors) is then calculating as the euclidean distance.
+										The fingerprints offer a 175x data size reduction from the original images, so that the k-most-similar images to a query can be found in just over 3 seconds on a single CPU, despite the initial dataset being 100 GB.
+
+
+									</p>
 									<h2>Methods</h2>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
 									<h3>Data Collection and Preprocessing</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+									<section id="bannernopad">
+									<div class="content">
+										<p>
+											The image database used for this project was a collection of high-resolution drone images from the <a href="https://github.com/dronedeploy/dd-ml-segmentation-benchmark" target="_blank" rel="noopener noreferrer">drone deploy git repo</a>.
+											The database contains ~60 .TIF images - of neighborhoods, natural scenes, cities - with a resolution of 10cm per pixel. When pixel values in the .TIFs are converted to 32-bit floats, the dataset has a total size of 70 GB.
+										</p>
+										<p>
+											These high-resolution drone images are then cut into smaller tiles, each of size 256x256 pixels. The tiling is acheived with a 128 pixel sliding window, so that image motifs are likely to be well centered in at least one tile.
+											Tiles with >50% null pixel values are removed from the dataset.
+										</p>
+										<p>
+											A small portion of an <b>example .TIF image</b> is shown the the right. The original image is 680 MB in size, and was processed into 3,836 tiles.
+										</p>
+									</div>
+									<span class="image object">
+										<img src="images/ml_sat_extif.png" alt=""/>
+									</span>
+									</section>
 									<h3>Compressing Images to CNN-Generated Fingerprints</h3>
-									<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+
+
+									<section id="bannernopad-flip">
+									<span class="image object">
+										<img src="images/resnet_arc.png" alt=""/>
+									</span>
+									<div class="content">
+										<p>
+											Here will go some info about tile compression to fingerprints
+										</p>
+									</div>
+
+									</section>
 
 									<hr class="major" />
 
