@@ -1551,6 +1551,7 @@ button,
   input[type="button"].small,
   button.small,
   .button.small {
+    margin-top: 0.75em;
     font-size: 0.75em; }
   input[type="submit"].large,
   input[type="reset"].large,
