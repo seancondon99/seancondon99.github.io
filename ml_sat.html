@@ -37,7 +37,7 @@
 										There now exists so much satellite imagery of the planet that we need to devise clever methods of analysing it all in a reasonable amount of time.
 										One important analysis task is finding similar images within a massive database. Image similarity search could be used, for example, to count all of the solar panels in the United States from NASA satellite imagery to do energy output analysis,
 										or searching through oceanic satellite imagery to find and follow whales as they migrate. If you're dealing with image databases on the terabyte scale, it is not really feasible to compare one image directly with every other image in the database.
-										Instead, we can compress all of our images to information-dense fingerpints, and do the comparison among these fingerprints instead.
+										Instead, we can compress all of our images to information-dense fingerpints, and do the comparison among these fingerprints.
 									</p>
 									<p>
 										In this project, a ~100 GB dataset of aerial images is fed through a pretrained, state-of-the-art convolutional neural network (CNN), and the activation of an intermediate layer of this network is interpreted as
@@ -75,7 +75,15 @@
 									</span>
 									<div class="content">
 										<p>
-											Here will go some info about tile compression to fingerprints
+											Tiles are compressed to low-dimensional fingerprints by being fed through a pretrained CNN. For this project, I used <a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener noreferrer">ResNet-18</a>, which has the architecture shown to the left.
+											ResNet-18 was trained to classify RGB images into 1000 different classes, and the intermediate features it learns to complete this task are useful for many computer vision tasks, including identifying similar motifs in geosatellite imagery.
+										</p>
+										<p>
+											Because we want ResNet to generalize to our satellite images (not just the 1000 classes it is trained to recognize), we remove the last layer of the network, and take the activations of the average_pool layer as each tile's fingerprint.
+											This effectively reduces each tile, initially ~200,000 floats, down to only 512 floats, giving a theoretical max data compression of 384x.
+										</p>
+										<p>
+											Once fingerprints are generated for all tiles in the dataset, the user selects a query image, and the k-most-similar images to the query can be returned as the k fingerprints with the least euclidean distance from the query fingerprint.
 										</p>
 									</div>
 
@@ -84,9 +92,29 @@
 									<hr class="major" />
 
 									<h2>Results</h2>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+									<p>
+										Here is an example of what the algorithm produces, with the query tile shown on the left and the 10 most similar images returned on the right:
+									</p>
+									<span class="image fit">
+										<img src="images/ml_sat_ex.png" alt=""/>
+									</span>
+									<p>
+										In terms of data compression, the fingerprints for all image tiles are stored in a hash table of structure <code>{tile_unique_identifier : fingerprint}</code>, so that a fingerprint can be quickly related back to its initial tile.
+										This hash table was implemented as a python dictionary, and has a size of 400 MB, meaning that we achieve a <b>data compression rate of 175x</b> relative to the initial image dataset of size 70 GB.
+										This data compression rate means that image similarity searches can be done with much less computational cost.
+									</p>
+									<p>
+										Actually finding the k-most-similar tiles to a query tile requires a euclidean distance calculation between the query fingerprint and all other fingerprints. This search has a time complexity that grows linearly with the amount of tiles.
+										We did speed tests on my CPU, and found that the 10 most similar images to a query can be computed in an average of <b>3.2 seconds</b> (95% CI 2.8 - 3.6s). This means that the entire 70 GB dataset can be searched on a single CPU in a reasonable amount of time.
+									</p>
+									<p>
+										Obviously, all of these results only matter if the algorithm returns images that actually look visually similar to the query. Obviously, this is a difficult thing to quantify, but the qualitative results on image similarity are certainly promising!
+										Scroll back up to the top of this page to see a selection of 7 randomly selected queries, and the 10 most similar images for those queries. These results were not cherry-picked because they looked good. Instead, the query images were chosen randomly.
+									</p>
 									<h3>Code</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+									<p>The code for this project is available on github, and there is also a written paper with a lot more detail that you can check out too! Find the links for both of these things below.</p>
+									<a class="button primary" href="https://github.com/seancondon99" target="_blank" rel="noopener noreferrer">Code on Github</a>&ensp;
+									<a class="button primary" download href="assets/ml_sat_small.pdf">Download Writeup</a>
 
 
 								</section>

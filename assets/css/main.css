@@ -1565,7 +1565,7 @@ button,
   input[type="button"].primary,
   button.primary,
   .button.primary {
-    background-color: #3d4449; /*#f56a6a */
+    background-color: #f56a6a; /* #3d4449 */
     box-shadow: none;
     color: #ffffff !important; }
     input[type="submit"].primary:hover,
