@@ -1566,6 +1566,7 @@ button,
   input[type="button"].primary,
   button.primary,
   .button.primary {
+    margin-top: 0.75em;
     background-color: #f56a6a; /* #3d4449 */
     box-shadow: none;
     color: #ffffff !important; }
