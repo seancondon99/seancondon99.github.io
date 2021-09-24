@@ -34,15 +34,14 @@
 									<p></p>
 									<h2>Overview</h2>
 									<p>
-										There now exists so much satellite imagery of the planet that we need to devise clever methods of analysing it all in a reasonable amount of time.
-										One important analysis task is finding similar images within a massive database. Image similarity search could be used, for example, to count all of the solar panels in the United States from NASA satellite imagery to do energy output analysis,
-										or searching through oceanic satellite imagery to find and follow whales as they migrate. If you're dealing with image databases on the terabyte scale, it is not really feasible to compare one image directly with every other image in the database.
+										An important task in the field of image analysis is finding similar images within a massive database. Image similarity search can be used, for example, to count all of the solar panels in the United States from satellite imagery and do a total energy output analysis,
+										or to search through the Earth's oceans to find and follow whales as they migrate. If you're dealing with image databases on the terabyte scale, it is not really feasible to compare one image directly with every other image in the database.
 										Instead, we can compress all of our images to information-dense fingerpints, and do the comparison among these fingerprints.
 									</p>
 									<p>
-										In this project, a ~100 GB dataset of aerial images is fed through a pretrained, state-of-the-art convolutional neural network (CNN), and the activation of an intermediate layer of this network is interpreted as
+										In this project, a ~70 GB dataset of aerial images is fed through a pretrained, state-of-the-art convolutional neural network (CNN), and the activation of an intermediate layer of this network is interpreted as
 										a low dimensional, information rich fingerprint for the original image. Similarity between two fingerprints (1-dimensional vectors) is then calculating as the euclidean distance.
-										The fingerprints offer a 175x data size reduction from the original images, so that the k-most-similar images to a query can be found in just over 3 seconds on a single CPU, despite the initial dataset being 100 GB.
+										The fingerprints offer a 175x data size reduction from the original images, so that the k-most-similar images to a query can be found in just over 3 seconds on a single CPU, despite the initial dataset being 70 GB.
 
 
 									</p>
@@ -53,10 +52,10 @@
 									<div class="content">
 										<p>
 											The image database used for this project was a collection of high-resolution drone images from the <a href="https://github.com/dronedeploy/dd-ml-segmentation-benchmark" target="_blank" rel="noopener noreferrer">drone deploy git repo</a>.
-											The database contains ~60 .TIF images - of neighborhoods, natural scenes, cities - with a resolution of 10cm per pixel. When pixel values in the .TIFs are converted to 32-bit floats, the dataset has a total size of 70 GB.
+											The database contains 60 .TIF images of neighborhoods, natural scenes, and cities with a resolution of 10cm per pixel. When pixel values in the .TIFs are converted to 32-bit floats, the dataset has a total size of 70 GB.
 										</p>
 										<p>
-											These high-resolution drone images are then cut into smaller tiles, each of size 256x256 pixels. The tiling is acheived with a 128 pixel sliding window, so that image motifs are likely to be well centered in at least one tile.
+											These high-resolution drone images are then cut into smaller tiles, each of size 256 x 256 pixels. The tiling is acheived with a 128 pixel sliding window, so that image motifs are likely to be well centered in at least one tile.
 											Tiles with >50% null pixel values are removed from the dataset.
 										</p>
 										<p>
