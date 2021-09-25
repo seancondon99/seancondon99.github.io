@@ -39,14 +39,14 @@
 									<p>
 										Recently, major music streaming services like apple music and spotify have allowed you to download your music listening history and poke through it.
 										I decided to take all 108,000 song streams I've accumulated over 4 years and put them to use training a music recommendation model.
-										Recommender systems are either content-based (in this case, meaning the system looks at the actual audio you've listened to), or collaborative (the system on looks at other user's music tastes that partially align with yours),
+										Recommender systems are either content-based (in this case, meaning the system looks at the actual audio you've listened to), or collaborative (the system looks at other users' music tastes that partially align with yours),
 										and because I don't have access to many other people's listening history, I went with a content-based approach.
 									</p>
 									<p>
 										I started by defining a likability metric for every song I had ever listened to, which ended up being a normalized measure of how many total minutes I streamed that song.
 										I then wrote a script to download the .mp3s of all these songs, and convert the raw sound into a <a href="https://en.wikipedia.org/wiki/Mel-frequency_cepstrum" target="_blank" rel="noopener noreferrer">mel spectrogram</a>, which turns an audio time-series into a frequency space that is scaled to better represent human sound perception.
 										The mel spectrograms are the model input, and the likeability metric is the model output; the model itself is a convolutional neural network implemented in PyTorch.
-										Everything described here has already been implemented in the code found below, and the next to-dos are to write the training loop, train the model, and analyze the eccentricities in the weights it has learned!
+										Everything described here has already been implemented in the code found below, and the next to-do's are to write the training loop, train the model, and analyze the eccentricities in the weights it has learned!
 									</p>
 									<hr class="major" />
 									<h2>Methods</h2>

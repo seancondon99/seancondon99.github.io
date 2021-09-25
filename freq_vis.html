@@ -34,16 +34,16 @@
 									<p></p>
 									<h2>Overview</h2>
 									<p>
-										A group of colleagues and I noticed that a lot of students have LEDs in their room, but a lot of these lights are boring and static - they don't interact with the environment.
-										To remedy this, we engineered an array of light fixtures that reacted to music and the ambient sound of a room, using an arduino, a microphone, and signal processing to break down incoming sound into its component frequencies and display them on programmable LEDs.
+										A group of colleagues and I noticed that a lot of students have LEDs in their room, but sometimes these lights are a little boring and static - they don't interact with the environment.
+										To remedy this, we engineered an array of light fixtures that react to music and the ambient sound of a room, using an arduino, a microphone, and signal processing to break down incoming sound into its component frequencies and display them on programmable LEDs.
 										We implemented many different audio processing techniques, like FFTs, beat detection, filtering / EQ, built many different light displays, from single light strips to 15 foot boards of 3,600 LEDs, and even got funding from MIT's Sandbox Innovtation Fund.
 										We did this all in hopes of making lights that looked as cool as possible when you played music.
 									</p>
 									<p>
 										With a project like this, seeing is believing! So I've embedded a promo video that I shot and edited myself. The light board shown in this video is the largest one we made (the 15 foot model) that can be seen at the top of this page.
-										The board works like this: the component signals of the audio (the song you hear playing) are computed with an FFT and then these frequencies are broadcast to the LEDs.
-										The lights in the center of the board represent the lower frequencies of sound (40 Hz to around 200 Hz), while the lights on the left and right represent the highest frequencies of sound (up to 20,000 Hz).
-										The board is mirrored about the center, and the height along the y-axis represents the volume in that frequency bin. Essentially, the baord shows each frame of a spectrogram of the song playing!
+										The board works like this: the component frequencies of the audio (the song you hear playing) are computed with an FFT and then broadcasted to the LED strips.
+										The lights in the center of the board represent the lower frequencies of sound (40 Hz to around 200 Hz), while the lights on the left and right edges represent the highest frequencies of sound (up to 20,000 Hz).
+										The board is mirrored about the center, and the height along the y-axis represents the volume in that frequency bin. Essentially, the board shows each frame of the spectrogram of the song playing!
 									</p>
 									<span class = "center">
 									<iframe width="896" height="400" src="https://www.youtube.com/embed/H4OFDt7eSHU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -54,7 +54,7 @@
 
 									<p>
 										Unfortunately, a lot of the code I wrote for this project is tied up in private repos, and can't be shared. However, I did write some code to turn the single strip of LEDs in my room into a music reactive piece.
-										I did things like break up sound into its component frequencies with an FFT and implement a beat-detection algorithm with a sliding window. I even wrote a little music-reactive game aptly titled "jump game" in which the one-dimensional player had to jump over one-dimensional spikes by clapping.
+										I did things like break up sound into its component frequencies with an FFT and implement a beat-detection algorithm with a sliding window. I even wrote a little music-reactive game aptly titled "jump game" in which the one-dimensional player has to jump over one-dimensional spikes by clapping.
 										Please see more details on that below!
 
 									</p>
@@ -65,15 +65,15 @@
 									<section id="bannernopad">
 									<div class="content">
 										<p>
-											The brains of the operation was a Teensy (basically a small Arduino or microcontroller) which read in the audio information from a microphone, converted it into a display for an LED strip, and then sent that display to the lights.
+											The brains of the operation was a Teensy (basically a small Arduino or microcontroller) which reads in the audio information from a microphone, converts it into a display for an LED strip, and then sends that display to the lights.
 											In the (poorly recorded) video to the right, the Teensy is doing a Fast Fourier Transform (FFT) on the song you can hear playing.
 										</p>
 										<p>
-											The output of the FFT is then equalized (because humans and computers perceive sounds differently) and the power of each frequency bin is displayed on the lights.
+											The output of the FFT is then equalized (because humans and computers perceive sound differently) and the power of each frequency bin is displayed on the lights.
 											There's some added effects on top, like a rainbow multiplier and a decay on pixel values, but those are the basics. You can see the bass notes of the song in the middle in blue, and the high frequencies or claps of the song are visible on the right side in purple.
 										</p>
 										<p>
-											In another audio processing algorithms I wrote, the beat of a song is detected with a sliding window that analyzes the average power and variance of the bass frequencies.
+											In another audio processing algorithm I wrote, the beat of a song is detected with a sliding window that analyzes the average power and variance of the bass frequencies.
 											I also made an EQ visualizer with multiple LED strips, and a simple game where a character jumps over "spikes" when you clap.
 
 										</p>
@@ -116,10 +116,10 @@
 									<h2>Larger Visualization Projects</h2>
 									<p>
 										These smaller music visualization projects that I did on my own with the LED strips in my room were a small part of the work that went into this project.
-										A lot of my interest was focused on building much a larger matrix of LEDs with my colleagues. And I've already shared a video of what that larger matrix looked like, but in lieu of providing its code, I thought I could give some more videos of it reacting to music.
+										A lot of my interest was focused on building a much larger matrix of LEDs with my colleagues. And I've already shared a video of what that larger matrix looked like, but in lieu of providing its code, I thought I could give some more videos of it reacting to music.
 									</p>
 									<p>
-										This board of lights was much larger than anything I had in my room (it had 3,600 LEDs that needed to be updated at each timestep), so in order to do all music-visualization calculations in a reasonble time, we needed to use 4 different Teensy's.
+										This board of lights was much larger than anything I had in my room (it had 3,600 LEDs that needed to be updated at each timestep), so in order to do all music visualization calculations in a reasonble time, we needed to use 4 different Teensy's.
 										One Teensy (the master, a more recent model than the others) handled the FFT calculation, and did it quickly enough such that updates couldn't be noticed by the human eye.
 										The other 3 Teensy's each controlled a third of the LEDs. They would receive the FFT from the master Teensy, update all their lights, and then send a flag back to the master conveying that they were ready for another FFT.
 										Only when the master received all three flags would another update be sent out.
@@ -127,8 +127,8 @@
 									<p>
 										Here are some more videos of the big matrix in action! Frequencies from the audio are computed by these four Teensy's and then displayed on the LEDs, with low frequencies in the middle of the matrix, and high frequencies on the edge of the matrix.
 										For the first 15 seconds you'll see and hear a birdcall, and notice the total absence of low frequencies. For the next 15 seconds you'll see and hear a Still Woozy song.
-										Note that the song has much more low frequencies, and that sudden increases in song power can trigger the lights to change color!
-										Finally, you'll see and hear a reading of the famous "to be or not to be" soliluquy. Note that everytime the speaker pronounces an "s" the high frequencies on the edge of the board light up!
+										Note that the song has much more low frequencies, and that sudden increases in song power can trigger the lights to change color.
+										Finally, you'll see and hear a reading of the famous "to be or not to be" soliluquy. Note that everytime the speaker pronounces an "s" the high frequencies on the edge of the board light up.
 									</p>
 
 									<span class="center">
